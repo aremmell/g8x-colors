@@ -1,0 +1,121 @@
+/*
+ * index.css
+ *
+ * Author:    Ryan M. Lederman <lederman@gmail.com>
+ * Copyright: Copyright (c) 2024
+ * Version:   0.0.1
+ * License:   The MIT License (MIT)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    text-align: center;
+    max-width: 75%;
+    margin: 1em auto 0 auto;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.intro {
+    text-align: center;
+    font-size: 1em;
+    max-width: 75%;
+    margin: auto;
+}
+
+.card {
+    min-width: 360px;
+    max-width: 369px;
+    margin-top: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.picker-container {
+    text-align: center;
+}
+
+.picker-container h3 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.results {
+    width: 369px;
+    text-align: center;
+    font-size: 1em;
+    padding-bottom: 1.5em;
+    box-shadow: 0 4px 8px 0 rgb(241 180 97 / 40%), 0 6px 20px 0 rgb(241 180 97 / 40%);
+}
+
+#resultsTable {
+    min-width: 220px;
+    padding: 0 1em 1em 1em;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+#resultsTable th {
+    font-weight: bold;
+}
+
+#resultsTable tr.separator {
+    border-spacing: 0 0.5em;
+}
+
+#resultsTable tr.separator td:not(.color) {
+    border-bottom: 1px solid #CCC;
+}
+
+#resultsTable tr.separator td.color {
+    border-bottom: 1px solid white;
+}
+
+.results .steps {
+    text-align: center;
+    font-size: 0.75em;
+    font-family: monospace;
+    margin-top: 2em;
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    max-width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 2em auto 0 auto;
+    padding: 0.5em 0.5em 1em 0.5em;
+    font-size: 0.5em;
+    text-align: center;
+}
