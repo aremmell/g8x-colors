@@ -44,13 +44,10 @@
         <meta property="og:description" content="<?php echo(PAGE_DESC);?>">
         <meta property="og:url" content="<?php echo(getCurrentURL());?>">
         <meta property="og:type" content="website">
-        <meta property="og:image" content="">
 
-        <!--<link rel="icon" href="favicon.png">
-        <link rel="icon" href="favicon.ico" sizes="any">
-        <link rel="icon" href="icon.svg" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <link rel="manifest" href="icons.webmanifest">-->
+        <link rel="icon" href="img/favicon.png">
+        <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
