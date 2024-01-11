@@ -3,9 +3,9 @@
  -->
 
 <?php
-    const PAGE_TITLE = "BimmerCode G8X Ambient Lighting Helper";
-    const PAGE_DESC  = "A web-based tool which makes customizing your G8X BMW's ambient lighting colors using BimmerCode easier.";
-    const INSTRUCTIONS = "<b>Instructions:</b> Choose the desired color(s), then screenshot, print or write down the values listed at the bottom of the page. Finally, use <a target=\"_blank\" href=\"https://bimmercode.app/\">BimmerCode</a> to write the values to your BMW G8X<em>(carefully)</em>!";
+    const PAGE_TITLE = "G8X Ambient Lighting Helper for BimmerCode";
+    const PAGE_DESC  = "Change your G8X BMW's ambient lighting colors with ease.";
+    const INSTRUCTIONS = "<b>Instructions:</b> Choose the desired colors, then print or write down the values listed at the bottom of the page. Finally, use <a target=\"_blank\" href=\"https://bimmercode.app/\">BimmerCode</a> to write the values to your BMW G8X<em>(carefully)</em>!";
 
     const COLOR_1_TITLE = "1. Doors &amp; Dash";
     const COLOR_2_TITLE = "2. Footwells";
