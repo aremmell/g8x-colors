@@ -1,27 +1,5 @@
 /*
- * index.css
- *
- * Author:    Ryan M. Lederman <lederman@gmail.com>
- * Copyright: Copyright (c) 2024
- * Version:   0.0.1
- * License:   The MIT License (MIT)
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of
- * this software and associated documentation files (the "Software"), to deal in
- * the Software without restriction, including without limitation the rights to
- * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
- * the Software, and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
- * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
- * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
- * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * index.css (https://github.com/aremmell/g8x-colors) v0.0.2
  */
 
 body {
@@ -72,7 +50,6 @@ body {
     text-align: center;
     font-size: 1em;
     padding-bottom: 1.5em;
-    box-shadow: 0 4px 8px 0 rgb(241 180 97 / 40%), 0 6px 20px 0 rgb(241 180 97 / 40%);
 }
 
 #resultsTable {
@@ -91,6 +68,11 @@ body {
     border-spacing: 0 0.5em;
 }
 
+#resultsTable td.color {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+}
+
 #resultsTable tr.separator td:not(.color) {
     border-bottom: 1px solid #CCC;
 }
@@ -100,10 +82,26 @@ body {
 }
 
 .results .steps {
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: left;
     font-size: 0.75em;
     font-family: monospace;
     margin-top: 2em;
+}
+
+.button-container {
+    margin: 2em auto 0 auto;
+}
+
+.button-container > button {
+    padding: 0.5em 1em 0.5em 1em;
+    background: #5d6fe8;
+    border: 1px solid #253cdd;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
 }
 
 .footer {

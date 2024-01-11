@@ -1,46 +1,48 @@
 <!--
- | index.php
- |
- | Author:    Ryan M. Lederman <lederman@gmail.com>
- | Copyright: Copyright (c) 2024
- | Version:   0.0.1
- | License:   The MIT License (MIT)
- |
- | Permission is hereby granted, free of charge, to any person obtaining a copy of
- | this software and associated documentation files (the "Software"), to deal in
- | the Software without restriction, including without limitation the rights to
- | use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
- | the Software, and to permit persons to whom the Software is furnished to do so,
- | subject to the following conditions:
- |
- | The above copyright notice and this permission notice shall be included in all
- | copies or substantial portions of the Software.
- |
- | THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- | IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
- | FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
- | COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
- | IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- | CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    index.php (https://github.com/aremmell/g8x-colors) v0.0.2
  -->
 
 <?php
-    $pageTitle = "BimmerCode G8X Ambient Lighting Helper";
-    $pageDesc  = "A web-based tool which makes customizing your BMW's ambient lighting colors using BimmerCode easier.";
-    $instructions = "<b>Instructions:</b> Choose the desired color(s), then screenshot, print or write down the values listed at the bottom of the page. Finally, use BimmerCode to write the values to your BMW G8X<em>(carefully)</em>!";
+    const PAGE_TITLE = "BimmerCode G8X Ambient Lighting Helper";
+    const PAGE_DESC  = "A web-based tool which makes customizing your G8X BMW's ambient lighting colors using BimmerCode easier.";
+    const INSTRUCTIONS = "<b>Instructions:</b> Choose the desired color(s), then screenshot, print or write down the values listed at the bottom of the page. Finally, use <a target=\"_blank\" href=\"https://bimmercode.app/\">BimmerCode</a> to write the values to your BMW G8X<em>(carefully)</em>!";
+
+    const COLOR_1_TITLE = "1. Doors &amp; Dash";
+    const COLOR_2_TITLE = "2. Footwells";
+    const COLOR_3_TITLE = "3. Map Light";
+
+    const RESULTS_TITLE = "Results";
+    const RESULTS_COL_1 = "Byte #";
+    const RESULTS_COL_2 = "Value";
+    const RESULTS_COL_3 = "Color";
+
+    const STEP_SEPARATOR = "&nbsp;&RightArrow;&nbsp;</br>";
+
+    const FOOTER_CONTENTS = "Copyright (&copy;) 2024 Ryan M. Lederman. <em>BimmerCode</em> is a copyright of SG Software GmbH & Co. KG, which is neither affiliated with nor endorses this website.<br/>Through your use of this website, you agree that you are doing so at your own risk, and additionally agree to all of the terms of the <a target=\"_blank\" href=\"https://github.com/aremmell/g8x-colors/blob/master/LICENSE\">MIT License</a>.<br/>Fork me on <a target=\"_blank\" href=\"https://github.com/aremmell/g8x-colors\">GitHub</a>.";
+
+    $bimmerCodePath = array(
+        0 => "Body Domain Controller (BDC_BODY3)",
+        1 => "360A/LIC_LCI_COLOR_LIBRARY_DATA",
+        2 => "360D/LIC_LCI_COLOR_PROFILES_DATA",
+        3 => "G20G21G26G28G80_Lichpacket_code1"
+    );
+
+    function getCurrentURL(): string
+    {
+        return "https://" . $_SERVER['HTTP_HOST'] . "/";
+    }
 ?>
 
 <!doctype html>
 <html lang="en">
     <head>
-        <title><?php echo($pageTitle);?></title>
+        <title><?php echo(PAGE_TITLE);?></title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <meta name="author" content="Ryan M. Lederman <lederman@gmail.com>">
 
-        <meta property="og:title" content="<?php echo($pageTitle);?>">
-        <meta property="og:description" content="<?php echo($pageDesc);?>">
-        <meta property="og:url" content="">
+        <meta property="og:title" content="<?php echo(PAGE_TITLE);?>">
+        <meta property="og:description" content="<?php echo(PAGE_DESC);?>">
+        <meta property="og:url" content="<?php echo(getCurrentURL());?>">
         <meta property="og:type" content="website">
         <meta property="og:image" content="">
 
@@ -57,9 +59,15 @@
         <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
         <script type="text/javascript" src="js/colorjoe.min.js"></script>
         <script type="text/javascript">
+            function printResults() {
+                var tmp = window.open('', '', 'width=370', 'height=370');
+                tmp.document.write(`<html><head><link rel=\"stylesheet\" href=\"css/index.css\"></head><body><div class=\"results\">${$("div.results").html()}</div></body></html>`);
+                tmp.document.close();
+                tmp.print();
+            }
             function onColorChange(rowNumber, color, ssBegin) {
-                const tr      = $(`#resultRow${rowNumber}`);
-                const hex     = color.hex();
+                const tr = $(`#resultRow${rowNumber}`);
+                const hex = color.hex();
                 var colorText = hex.substr(ssBegin, 2);
                 if (colorText === "ff") {
                     colorText = "fe";
@@ -70,7 +78,6 @@
                     colorTd.css("background", color.css());
                 }
             }
-            /* initialize the color pickers. */
             $(() => {
                 const joe1 = colorjoe.rgb('rgbPicker1', '#0066b2', [
                     'currentColor',
@@ -105,7 +112,6 @@
             });
         </script>
     </head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTC7PMJ943"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -116,91 +122,101 @@
     <body>
         <div class="wrapper">
             <div class="title">
-                <?php echo($pageTitle);?>
+                <?php echo(PAGE_TITLE);?>
             </div>
             <div class="intro">
-                <p><?php echo($instructions);?></p>
+                <p><?php echo(INSTRUCTIONS);?></p>
             </div>
             <div class="picker-container card">
-                <h3>1. Doors &amp; Dash</h3>
+                <h3><?php echo(COLOR_1_TITLE);?></h3>
                 <div id="rgbPicker1"></div>
             </div>
             <div class="picker-container card">
-                <h3>2. Footwells</h3>
+                <h3><?php echo(COLOR_2_TITLE);?></h3>
                 <div id="rgbPicker2"></div>
             </div>
             <div class="picker-container card">
-                <h3>3. Map Light</h3>
+                <h3><?php echo(COLOR_3_TITLE);?></h3>
                 <div id="rgbPicker3"></div>
             </div>
             <div class="results card">
                 <h3>
-                    Results
+                <?php echo(RESULTS_TITLE);?>
                 </h3>
                 <table id="resultsTable">
                     <tr>
-                        <th>Byte #</th>
-                        <th>Value</th>
-                        <th>Color</th>
+                        <th><?php echo(RESULTS_COL_1);?></th>
+                        <th><?php echo(RESULTS_COL_2);?></th>
+                        <th><?php echo(RESULTS_COL_3);?></th>
                     </tr>
                     <tr id="resultRow1">
-                        <td>18</td>
+                        <td class="byte">18</td>
                         <td class="value">0</td>
                         <td class="color"></td>
                     </tr>
                     <tr id="resultRow2">
-                        <td>19</td>
+                        <td class="byte">19</td>
                         <td class="value">0</td>
                         <td class="color"></td>
                     </tr>
                     <tr id="resultRow3" class="separator">
-                        <td>20</td>
+                        <td class="byte">20</td>
                         <td class="value">0</td>
                         <td class="color"></td>
                     </tr>
                     <tr id="resultRow4">
-                        <td>23</td>
+                        <td class="byte">23</td>
                         <td class="value">0</td>
                         <td class="color"></td>
                     </tr>
                     <tr id="resultRow5">
-                        <td>24</td>
+                        <td class="byte">24</td>
                         <td class="value">0</td>
                         <td class="color"></td>
                     </tr>
                     <tr id="resultRow6" class="separator">
-                        <td>25</td>
+                        <td class="byte">25</td>
                         <td class="value">0</td>
                         <td class="color"></td>
                     </tr>
                     <tr id="resultRow7">
-                        <td>28</td>
+                        <td class="byte">28</td>
                         <td class="value">0</td>
                         <td class="color"></td>
                     </tr>
                     <tr id="resultRow8">
-                        <td>29</td>
+                        <td class="byte">29</td>
                         <td class="value">0</td>
                         <td class="color"></td>
                     </tr>
                     <tr id="resultRow9" class="separator">
-                        <td>30</td>
+                        <td class="byte">30</td>
                         <td class="value">0</td>
                         <td class="color"></td>
                     </tr>
                 </table>
                 <div class="steps">
                     <p>
-                        Body Domain Controller (BDC_BODY3)&nbsp;&RightArrow;&nbsp;
-                        360A/LIC_LCI_COLOR_LIBRARY_DATA&nbsp;&RightArrow;&nbsp;
-                        360D/LIC_LCI_COLOR_PROFILES_DATA&nbsp;&RightArrow;&nbsp;
-                        G20G21G26G28G80_Lichpacket_code1
+                        <?php
+                            $stepCount = count($bimmerCodePath);
+                            foreach ($bimmerCodePath as $key => $value) {
+                                echo($value);
+                                if ($key < $stepCount - 1) {
+                                    echo(STEP_SEPARATOR);
+                                }
+                            }
+                        ?>
                     </p>
                 </div>
             </div>
+            <div class="button-container">
+                <button type="button" onclick="printResults();">
+                    Print Results
+                </button>
+            </div>
         </div>
         <div class="footer">
-            <p>Copyright (&copy;) <?php echo(date("Y"));?> Ryan M. Lederman. <em>BimmerCode</em> is a copyright of SG Software GmbH & Co. KG, which is neither affiliated with nor endorses this website.<br/>Through your use of this website, you agree that you are doing so at your own risk, and additionally agree to all of the terms of the <a target="_blank" href="https://mit-license.org/">MIT License</a>.<br/>Utilizes the <a target="_blank" href="https://github.com/bebraw/colorjoe">colorjoe</a> JavaScript library.</p>
+            <p><?php echo(FOOTER_CONTENTS);?></p>
         </div>
     </body>
 </html>
