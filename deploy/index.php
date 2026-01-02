@@ -198,7 +198,7 @@
                         <td class="color"></td>
                     </tr>
                 </table>
-                <p style="font-size: 0.75em;margin-right: 1em;margin-left: 1em;margin-top: 2em;"><?php echo(DISCLAIMER_VERSIONING);?></p>
+                <p style="font-size: 0.75em;margin-right: 1em;margin-left: 1em;margin-top: 2em;color:#7b7676;"><?php echo(DISCLAIMER_VERSIONING);?></p>
                 <div class="steps">
                     <p>
                         <?php
@@ -221,6 +221,7 @@
         </div>
         <div class="footer">
             <p><?php echo(FOOTER_CONTENTS);?></p>
+            <p><?php echo(VERSION);?></p>
         </div>
     </body>
 </html>
