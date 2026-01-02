@@ -1,8 +1,5 @@
-<!--
-    index.php (https://github.com/aremmell/g8x-colors) v0.0.2
- -->
-
 <?php
+    const VERSION = "0.1.0";
     const PAGE_TITLE = "G8X Ambient Lighting Helper";
     const PAGE_DESC  = "Change your G8X BMW's ambient lighting colors with ease.";
     const INSTRUCTIONS = "<b>Instructions:</b> Choose the desired colors, then print or write down the values listed at the bottom of the page. Finally, use a tool such as <a target=\"_blank\" href=\"https://bimmercode.app/\">BimmerCode</a> to write the values to your BMW G8X<em>(carefully)</em>!";
@@ -19,6 +16,8 @@
     const STEP_SEPARATOR = "&nbsp;&RightArrow;&nbsp;</br>";
 
     const FOOTER_CONTENTS = "Copyright (&copy;) 2024 Ryan M. Lederman. <em>BimmerCode</em> is a copyright of SG Software GmbH & Co. KG, which is neither affiliated with nor endorses this website.<br/>Through your use of this website, you agree that you are doing so at your own risk, and additionally agree to all of the terms of the <a target=\"_blank\" href=\"https://github.com/aremmell/g8x-colors/blob/master/LICENSE\">MIT License</a>.<br/>Fork me on <a target=\"_blank\" href=\"https://github.com/aremmell/g8x-colors\">GitHub</a>.";
+
+    const DISCLAIMER_VERSIONING = "DISCLAIMER: These instructions were written in early 2024, and may no longer be correct for newer models. Verify with experts on a BMW forum such as BimmerPost beforehand until such time that I have updated the site.<br /><br />Regardless of the correctness of the instructions, you may safely rely upon the color code generation&mdash;that hasn't changed.";
 
     $bimmerCodePath = array(
         0 => "Body Domain Controller (BDC_BODY3)",
@@ -199,6 +198,7 @@
                         <td class="color"></td>
                     </tr>
                 </table>
+                <p style="font-size: 0.75em;margin-right: 1em;margin-left: 1em;margin-top: 2em;"><?php echo(DISCLAIMER_VERSIONING);?></p>
                 <div class="steps">
                     <p>
                         <?php
