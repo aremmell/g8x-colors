@@ -2,7 +2,7 @@
     const VERSION = "v0.1.0";
     const PAGE_TITLE = "G8X Ambient Lighting Helper";
     const PAGE_DESC  = "Change your G8X BMW's ambient lighting colors with ease.";
-    const INSTRUCTIONS = "<b>Instructions:</b><br />Choose the desired colors, then print or write down the values listed at the bottom of the page. Finally, use a tool such as <a target=\"_blank\" href=\"https://bimmercode.app/\">BimmerCode</a> to write the values to your BMW G8X<em>(carefully)</em>!";
+    const INSTRUCTIONS = "<b>Instructions:</b><br /><br />Choose the desired colors, then print or write down the values listed at the bottom of the page. Finally, use a tool such as <a target=\"_blank\" href=\"https://bimmercode.app/\">BimmerCode</a> to write the values to your BMW G8X<em>(carefully)</em>!";
 
     const COLOR_1_TITLE = "1. Doors &amp; Dash";
     const COLOR_2_TITLE = "2. Footwells";
