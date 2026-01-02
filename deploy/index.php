@@ -1,8 +1,8 @@
 <?php
-    const VERSION = "0.1.0";
+    const VERSION = "v0.1.0";
     const PAGE_TITLE = "G8X Ambient Lighting Helper";
     const PAGE_DESC  = "Change your G8X BMW's ambient lighting colors with ease.";
-    const INSTRUCTIONS = "<b>Instructions:</b> Choose the desired colors, then print or write down the values listed at the bottom of the page. Finally, use a tool such as <a target=\"_blank\" href=\"https://bimmercode.app/\">BimmerCode</a> to write the values to your BMW G8X<em>(carefully)</em>!";
+    const INSTRUCTIONS = "<b>Instructions:</b><br />Choose the desired colors, then print or write down the values listed at the bottom of the page. Finally, use a tool such as <a target=\"_blank\" href=\"https://bimmercode.app/\">BimmerCode</a> to write the values to your BMW G8X<em>(carefully)</em>!";
 
     const COLOR_1_TITLE = "1. Doors &amp; Dash";
     const COLOR_2_TITLE = "2. Footwells";
@@ -26,9 +26,9 @@
         3 => "G20G21G26G28G80_Lichpacket_code1"
     );
 
-    function getCurrentURL(): string
+    function getOfficialURL(): string
     {
-        return "https://" . $_SERVER['HTTP_HOST'] . "/";
+        return "https://rml.dev/g8x-colors";
     }
 ?>
 
@@ -42,9 +42,9 @@
 
         <meta property="og:title" content="<?php echo(PAGE_TITLE);?>">
         <meta property="og:description" content="<?php echo(PAGE_DESC);?>">
-        <meta property="og:url" content="<?php echo(getCurrentURL());?>">
+        <meta property="og:url" content="<?php echo(getOfficialURL());?>">
         <meta property="og:type" content="website">
-        <meta property="og:image" content="<?php echo(getCurrentURL());?>/img/og-image.png">
+        <meta property="og:image" content="<?php echo(getOfficialURL());?>/img/og-image.png">
 
         <link rel="icon" type="image/png" href="img/favicon-96x96.png" sizes="96x96" />
         <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
