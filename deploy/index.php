@@ -33,20 +33,27 @@
     }
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <title><?php echo(PAGE_TITLE);?></title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="author" content="Ryan M. Lederman <lederman@gmail.com>">
 
         <meta property="og:title" content="<?php echo(PAGE_TITLE);?>">
         <meta property="og:description" content="<?php echo(PAGE_DESC);?>">
         <meta property="og:url" content="<?php echo(getCurrentURL());?>">
         <meta property="og:type" content="website">
+        <meta property="og:image" content="<?php echo(getCurrentURL());?>/img/og-image.png">
 
-        <link rel="icon" href="img/favicon.png">
-        <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+        <link rel="icon" type="image/png" href="img/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+        <link rel="shortcut icon" href="img/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+        <link rel="manifest" href="img/site.webmanifest" />
+
+        <meta name="apple-mobile-web-app-title" content="G8X Colors" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
